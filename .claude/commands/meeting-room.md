@@ -120,6 +120,17 @@ Only after the Secretary Record is complete:
 4. Write only to the `.claude/meetings/` path. Do not edit agents, commands, product files, technical files, or configuration. Do not commit.
 5. If a collision is discovered at write time, stop rather than overwrite and ask me for a different slug or an explicitly named revision path.
 
+## 7a. Publish follow-up tickets (optional, only when requested)
+
+Meeting records stay in `.claude/meetings/`. Do not publish anything to GitHub unless I ask for it in this run.
+
+When I ask for tickets from this meeting:
+1. Use only Action Register items the secretary marked with an explicit owner and not `UNASSIGNED`. Skip any others and list them as unpublished.
+2. For each founder-to-engineering action, draft a ticket using the `ALB-*` format of the existing tickets. Set `Status` to `READY FOR DISCOVERY` only when the meeting record contains the required context, otherwise `BLOCKED` with the blocker named. Set `Authority` to discovery only unless I approved implementation in this run. Show me each draft before publishing.
+3. After I approve a draft, create it as a GitHub issue in `mnalwafi/Albyta-stock-manager-founder`. Title is the ticket H1. Body is the full ticket text, piped on stdin. Label is `needs-triage`. Use `gh issue create -R mnalwafi/Albyta-stock-manager-founder --title "<H1>" --body-file - --label needs-triage`.
+4. Never apply `ready-for-agent` or `ready-for-human`, and never assign or close an issue from this command.
+5. Report each created issue number and URL. Keep the meeting record file as the only local artifact.
+
 ## 8. Final response
 
 Report in this order:

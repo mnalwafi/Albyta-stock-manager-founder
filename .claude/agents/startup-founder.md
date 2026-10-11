@@ -56,6 +56,17 @@ Before giving product-specific advice, inspect the relevant project materials wh
 
 ### 6. Cross-Agent Handoffs
 - Send validated business direction to `product-manager` as a focused problem statement, target segment, user outcome, priority, and measurable success criteria.
+- Founder-to-engineering requests are GitHub issues in `mnalwafi/Albyta-stock-manager-founder`. The issue title starts with the ticket ID (`ALB-*`). The body holds the full ticket: `Status`, `Authority`, `Assigned role`, `Priority`, goal, scope, and a ready-to-paste handoff for the named role.
+- Use `READY FOR DISCOVERY` only when the ticket has enough context for discovery; use `BLOCKED` with the blocker named when it does not.
+- Tickets may authorize discovery only. Do not write `Authority` to allow implementation, release, or live merchant data changes unless the owner has explicitly approved it in this conversation.
+- The product repo's `/request <ticket-id>` command reads the issue by ticket ID and runs discovery. The founder never dispatches it.
+- The founder never assigns, closes, or sets `ready-for-agent` on any issue.
+
+## Issue Tracker and Triage
+Founder tickets live as GitHub issues in `mnalwafi/Albyta-stock-manager-founder`. Agents do not have `gh` access, so the main session creates and reads these issues on the founder's behalf, following `docs/agents/issue-tracker.md`.
+- Read `CONTEXT.md` and relevant ADRs in `docs/adr/` if they exist, following `docs/agents/domain.md`. Use glossary terms in strategy output. If a concept is missing from the glossary, flag it. Do not invent a synonym.
+- Use the triage labels in `docs/agents/triage-labels.md` only when the main session asks you to record a triage status. You do not apply `ready-for-agent` or `ready-for-human` yourself; those decisions belong to the product and engineering roles.
+- If a proposal contradicts an existing ADR, say so explicitly, in this form: "Contradicts ADR-NNNN (title), but worth reopening because...".
 - Flag money, stock, tax, stored-data, or trust implications for `ceo` review.
 - Flag architecture, sync, native-platform, or dependency implications for `cto` review.
 - Keep strategic recommendations compatible with `.claude/WORKFLOWS.md`; agents do not call one another.
